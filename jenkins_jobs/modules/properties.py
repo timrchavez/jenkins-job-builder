@@ -616,6 +616,36 @@ def zeromq_event(parser, xml_parent, data):
     XML.SubElement(zmq_event, 'enabled').text = 'true'
 
 
+def build_discarder(parser, xml_parent, data):
+    """yaml: build-discarder
+    Controls how Jenkins handles old builds left on slaves.
+
+    :arg int days-to-keep: How many days to keep builds for
+    :arg int num-to-keep: How many builds to keep
+    :arg int artifact-days-to-keep: How many days to keep build artifacts for
+    :arg int artifact-num-to-keep: How many artifacts to keep
+
+    Example:
+
+    .. literalinclude::
+        /../../tests/properties/fixtures/build-discarder1.yaml
+        :language: yaml
+
+    """
+    sub_element = XML.SubElement(xml_parent,
+                                 'jenkins.model.BuildDiscarderProperty')
+    strategy = XML.SubElement(sub_element, 'strategy')
+    strategy.set('class', 'hudson.tasks.LogRotator')
+    XML.SubElement(strategy, 'daysToKeep').text = str(
+        data.get('days-to-keep'))
+    XML.SubElement(strategy, 'numToKeep').text = str(
+        data.get('num-to-keep'))
+    XML.SubElement(strategy, 'artifactDaysToKeep').text = str(
+        data.get('artifact-days-to-keep'))
+    XML.SubElement(strategy, 'artifactNumToKeep').text = str(
+        data.get('artifact-num-to-keep'))
+
+
 def slack(parser, xml_parent, data):
     """yaml: slack
     Requires the Jenkins :jenkins-wiki:`Slack Plugin <Slack+Plugin>`
