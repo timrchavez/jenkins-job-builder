@@ -5,3 +5,6 @@ properties:
         notify-aborted: true
         include-custom-message: true
         custom-message: 'Custom foo message'
+        team-domain: my-slack-domain
+        token: my-slack-token
+        room: '#my-room'
