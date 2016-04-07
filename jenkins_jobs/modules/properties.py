@@ -731,6 +731,8 @@ def slack(parser, xml_parent, data):
     :arg str custom-message: Custom message to be included. (default '')
     :arg str room: A comma seperated list of rooms / channels to send
         the notifications to. (default '')
+    :arg str team-domain: The slack domain. (default: '')
+    :arg str token: The slack api token. (default: '')
 
     Example:
 
@@ -766,6 +768,8 @@ def slack(parser, xml_parent, data):
         ('include-custom-message', 'includeCustomMessage', False),
         ('custom-message', 'customMessage', ''),
         ('room', 'room', ''),
+        ('team-domain', 'teamDomain', ''),
+        ('token', 'token', ''),
     )
 
     slack = XML.SubElement(

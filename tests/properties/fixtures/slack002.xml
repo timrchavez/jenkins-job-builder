@@ -13,7 +13,9 @@
       <includeTestSummary>false</includeTestSummary>
       <includeCustomMessage>true</includeCustomMessage>
       <customMessage>Custom foo message</customMessage>
-      <room/>
+      <room>#my-room</room>
+      <teamDomain>my-slack-domain</teamDomain>
+      <token>my-slack-token</token>
     </jenkins.plugins.slack.SlackNotifier_-SlackJobProperty>
   </properties>
 </project>
